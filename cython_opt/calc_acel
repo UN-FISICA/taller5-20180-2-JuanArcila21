@@ -1,9 +1,17 @@
 #!/usr/bin/python3
 import argparse
 from calc_mod import *
-
-
+import scipy.misc as sp
+parser=argparse.ArgumentParser()
+parser.add_argument("-imname","--archivo",type=str,help="nombre del archivo a procesar")
+parser.add_argument("-hz","--frecuencia",type=float,help="frecuencia de la lampara estroboscopica en hertz")
+parser.add_argument("-dx","--pixel",type=float,help="tamano de cada pixel")
+args=parser.parse_args() #en args se guardan las entradas
+archivo=str(args.archivo) #usando las variables que coloca el usiario
+frecuencia=args.frecuencia #usando las variables que coloca el usiario
+espacio=args.pixel #usando las variables que coloca el usiario
+img=sp.imread(archivo) #lee el archivo indicado
+print (calc(img,frecuencia,espacio))
 
 if __name__ =="__main__":
     print("***")
-   
